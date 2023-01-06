@@ -1,12 +1,6 @@
-FROM node:latest
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-CMD [ "node", "index.js" ]
+FROM python:3.6
+MAINTAINER Shivam Mitra "shivamm389@gmail.com" # Change the name and email address
+COPY app.py test.py /app/
+WORKDIR /app
+RUN pip install flask pytest flake8 # This downloads all the dependencies
+CMD ["python", "app.py"]

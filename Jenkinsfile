@@ -1,5 +1,5 @@
 pipeline{
-    
+
     agent {label 'linux'}
 
 	environment {
@@ -11,15 +11,15 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/shazforiot/nodeapp_test.git'
+				git 'https://github.com/luanpm1512/vsmon-server.git'
+                credentialsId: 'github_login'
 			}
 		}
 
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t luanpm/nodeapp_test:latest .'
-			}
+				sh 'docker build -t luanpm/vsmon-server:v5'
 		}
 
 		stage('Login') {
@@ -32,7 +32,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push luanpm/nodeapp_test:latest'
+				sh 'docker push luanpm/vsmon-server:v5'
 			}
 		}
 	}

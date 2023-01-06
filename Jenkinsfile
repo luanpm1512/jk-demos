@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label "jk-slave-1"}
     
     environment {
         DOCKER_HUB_REPO = "luanpm/flask-hello-world"
@@ -34,8 +34,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'minikube kubectl -- apply -f deployment.yaml'
-                sh 'minikube kubectl -- apply -f service.yaml'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
             }
         }
     }

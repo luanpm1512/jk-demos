@@ -9,7 +9,7 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/luanpm1512/jk-demos.git'
+				git 'https://github.com/shazforiot/nodeapp_test.git'
 			}
 		}
 
